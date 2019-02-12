@@ -18,24 +18,21 @@ EvaluationResult evaluateMethod(TraceLink manual, TraceLink fromMethod, Requirem
 }
 
 private real calculatePrecision(ConfusionMatrix cm) {
-  // TODO
-
-  // REMOVE BELOW LINE, ONLY HERE TO MAKE THE TEMPLATES RUNNABLE
-  return 0.;
+  // Precision = TP / (TP + FP)
+  
+  return cm.truePositives / (cm.truePositives + cm.falsePositives);
 }
 
 private real calculateRecall(ConfusionMatrix cm) { 
-  // TODO
+  // Recall = TP / (TP + FN)
   
-  // REMOVE BELOW LINE, ONLY HERE TO MAKE THE TEMPLATES RUNNABLE
-  return 0.;
+  return cm.truePositives / (cm.truePositives + cm.falseNegatives);
 }
 
 private real calculateFMeasure(real precision, real recall) {
-  // TODO
+  // F1-score = 2 * (precision * recall) / (precision + recall)
   
-  // REMOVE BELOW LINE, ONLY HERE TO MAKE THE TEMPLATES RUNNABLE
-  return 0.;
+  return 2 * ((precision * recall) / (precision + recall));
 }
 
 private ConfusionMatrix calculateConfusionMatrix(TraceLink manual, TraceLink automatic, Requirement highlevel, Requirement lowlevel) {
