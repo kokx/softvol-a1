@@ -6,10 +6,9 @@ import Set;
 
 import steps::detection::RequirementsReader;
 
-Requirement removeStopWords(Requirement reqs) {
-  // TODO: Remove the stop words from the words lists of all the requirements.
+Requirement removeStopWords(Requirement reqs) {  
+  reqs = { <r.name, r.words - readStopwordsList> | r <- reqs }; 
   
-  // REMOVE BELOW LINE, ONLY HERE TO MAKE THE TEMPLATES RUNNABLE
   return reqs;
 }
 
@@ -17,3 +16,5 @@ Requirement removeStopWords(Requirement reqs) {
 
 private set[str] readStopwords() =
 	{word | /<word:[a-zA-Z\"]+>/ := readFile(|project://assignment1/data/stop-word-list.txt|)};
+
+list[str] readStopwordsList = toList(readStopwords());
