@@ -7,18 +7,13 @@ import util::Math;
 import IO;
 import Set;
 import List;
+import Relation;
 
 alias SimilarityMatrix = rel[str highlevel, str lowlevel, real score];
 
-SimilarityMatrix calculateSimilarityMatrix(Requirement highlevel, Requirement lowlevel, Vector vec) {
-	// TODO: Calculate the similarity matrix of the high- and lowlevel requirements using the passed in vectors
-	// You can use the given function 'cos(list[real] high, list[real] low)' to calculate the similarity score of two requirements
-
-  // REMOVE BELOW LINE, ONLY HERE TO MAKE THE TEMPLATES RUNNABLE
-  return {};
+SimilarityMatrix calculateSimilarityMatrix(Requirement highlevel, Requirement lowlevel, Vector vec) {  
+	return { <h.name, l.name, cos(vectors[h.name], vectors[l.name])> | h <- highlevel, l <- lowlevel };
 }
-
-// TODO: Add extra functions if wanted / needed
 
 @doc {
   Calculate the cosinus of two (real) vectors.
@@ -30,4 +25,13 @@ real cos(list[real] high, list[real] low) {
 	real y = sqrt((0. | it + l * l | real l <- low));
 	
 	return top / (x * y);
+}
+
+void main() {
+	Requirement h = { <"f1", [ "a" ]> };
+	Requirement l = { <"u1", [ "a" ]> };
+	rel[str name, list[real] freq] vectors = { <"f1", [0.0]>, <"u1", [1.0]> };
+	
+	println(index(vectors)["f1"]);
+	println(vectors["f1"]<0>);
 }
