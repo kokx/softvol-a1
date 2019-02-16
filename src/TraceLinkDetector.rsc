@@ -38,7 +38,7 @@ void gatherLinks(DataSet grp) {
 	println("(7/7) Gathering trace links for different methods");
 	AllTraceLinks allLinks = constructLinks(sm);
 
-  writeTextValueFile(grp.dir + "tracelinks.result", allLinks);  
+  	writeTextValueFile(grp.dir + "tracelinks.result", allLinks);  
 	
 	println("Done");
 	
