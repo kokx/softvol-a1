@@ -30,7 +30,7 @@ Vector calculateVector(Requirement reqs, list[str] vocabulary) {
   The 'occurences' map should have entries for all the words in the vocabulary, otherwise an exception will be thrown.
 }
 private map[str,real] calculateInverseDocumentFrequency(map[str,int] occurences, list[str] vocabulary, Requirement reqs) {
-  	int nrOfReqs = size(reqs);
+  	num nrOfReqs = size(reqs);
   	map[str,real] idfs = (w : log2(nrOfReqs / occurences[w]) | str w <- vocabulary); 
 
   	return idfs;
