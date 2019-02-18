@@ -42,9 +42,9 @@ void gatherLinks(DataSet grp) {
 	
 	println("Done");
 	
-	//for (int i <- [0..size(allLinks)]) {
-	//	printLinks(allLinks[i], i);
-	//}
+	for (int i <- [0..size(allLinks)]) {
+		printLinks(allLinks[i], i);
+	}
 }
 
 void printLinks(TraceLink links, int i) {
