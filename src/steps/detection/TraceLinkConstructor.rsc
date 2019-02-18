@@ -2,6 +2,7 @@ module steps::detection::TraceLinkConstructor
 
 import steps::detection::SimilarityCalculator;
 import List;
+import Set;
 import IO;
 
 alias TraceLink = rel[str,str];
@@ -23,15 +24,9 @@ TraceLink constructMethod2(SimilarityMatrix sm) {
 TraceLink constructMethod3(SimilarityMatrix sm) {
 	// For every `h`, find `l` with the highest similarity score and report all `l'`,
 	// such that `sim(h,l') ≥ 0.67 sim(h,l)`.
+	rel[str highlevel, real score] highScore = { <h, max(sm[h]<1>)> | h <- sm.highlevel };
 	
-	// TODO
-}
-
-void main() {
-	SimilarityMatrix sm = {
-		<"f1", "u1", 0.0>,
-		<"f1", "u2", 0.4>
-	};
+	matches = { r | r <- sm, r.score >= 0.67 * max(highScore[r.highlevel]) };
 	
-	println(constructMethod1(sm));
+	return matches<highlevel, lowlevel>;
 }
