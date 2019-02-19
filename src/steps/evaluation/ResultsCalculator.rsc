@@ -13,18 +13,20 @@ alias EvaluationResult = tuple[ConfusionMatrix cm, real precision, real recall, 
 EvaluationResult evaluateMethod(TraceLink manual, TraceLink fromMethod, Requirement highlevel, Requirement lowlevel) {
 	cm = calculateConfusionMatrix(manual, fromMethod, highlevel, lowlevel);
 	
-	real precision = calculatePrecision(cm);
+	precision = calculatePrecision(cm);
 	real recall = calculateRecall(cm);
 	real fMeasure = calculateFMeasure(precision, recall);
 	
 	return <cm, precision, recall, fMeasure>;
 }
 
-private real calculatePrecision(ConfusionMatrix cm) {
-  	// Precision = TP / (TP + FP)
-  
-	return 1.0 * cm.truePositives / (cm.truePositives + cm.falsePositives);
-}
+private real calculatePrecision(ConfusionMatrix cm) = toReal(cm.truePositives) / toReal(cm.truePositives + cm.falsePositives);
+
+//private real calculatePrecision(ConfusionMatrix cm) {
+//  	// Precision = TP / (TP + FP)
+//  
+//	return 1.0 * cm.truePositives / (cm.truePositives + cm.falsePositives);
+//}
 
 private real calculateRecall(ConfusionMatrix cm) { 
   	// Recall = TP / (TP + FN)
