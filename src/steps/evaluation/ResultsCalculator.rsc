@@ -20,13 +20,11 @@ EvaluationResult evaluateMethod(TraceLink manual, TraceLink fromMethod, Requirem
 	return <cm, precision, recall, fMeasure>;
 }
 
-private real calculatePrecision(ConfusionMatrix cm) = toReal(cm.truePositives) / toReal(cm.truePositives + cm.falsePositives);
-
-//private real calculatePrecision(ConfusionMatrix cm) {
-//  	// Precision = TP / (TP + FP)
-//  
-//	return 1.0 * cm.truePositives / (cm.truePositives + cm.falsePositives);
-//}
+private real calculatePrecision(ConfusionMatrix cm) {
+  	// Precision = TP / (TP + FP)
+  
+	return 1.0 * cm.truePositives / (cm.truePositives + cm.falsePositives);
+}
 
 private real calculateRecall(ConfusionMatrix cm) { 
   	// Recall = TP / (TP + FN)
