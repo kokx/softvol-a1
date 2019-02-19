@@ -13,7 +13,7 @@ alias EvaluationResult = tuple[ConfusionMatrix cm, real precision, real recall, 
 EvaluationResult evaluateMethod(TraceLink manual, TraceLink fromMethod, Requirement highlevel, Requirement lowlevel) {
 	cm = calculateConfusionMatrix(manual, fromMethod, highlevel, lowlevel);
 	
-	precision = calculatePrecision(cm);
+	real precision = calculatePrecision(cm);
 	real recall = calculateRecall(cm);
 	real fMeasure = calculateFMeasure(precision, recall);
 	
