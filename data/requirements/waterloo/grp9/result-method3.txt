@@ -1,0 +1,33 @@
+RESULTS FOR "method3"
+-------------------------------
+Confusion matrix:
+                                       | Trace-links   | Trace-links 
+                                       | identified    | NOT identified
+                                       | manually      | manually
+---------------------------------------------------------------------------------
+Trace-links predicted by the tool      | 11            | 103
+Trace-links NOT predicted by the tool  | 42            | 1652
+
+Precision: 9.6%
+Recall:    21.%
+F-Measure: 0.13	             
+
+Found links by method:
+  
+  F1      UC3
+  F2      UC17
+  F3      UC1,UC2,UC3,UC4,UC5,UC6,UC7,UC8,UC9,UC10,UC11,UC12,UC13,UC14,UC15,UC16,UC17,UC18,UC19
+  F4      UC1,UC2,UC3,UC4,UC5,UC6,UC7,UC8,UC9,UC10,UC11,UC12,UC13,UC14,UC15,UC16,UC17,UC18,UC19
+  F5      UC1,UC2,UC3,UC4,UC5,UC6,UC7,UC8,UC9,UC10,UC11,UC12,UC13,UC14,UC15,UC16,UC17,UC18,UC19
+  F6      UC2,UC3,UC7,UC8,UC11,UC12
+  F7      UC13
+  F8      UC1,UC2,UC3,UC4,UC5,UC6,UC7,UC8,UC9,UC10,UC11,UC12,UC13,UC14,UC15,UC16,UC17,UC18,UC19
+  F9      UC6,UC9
+  F10     UC11,UC12
+  F11     UC2,UC4,UC5,UC6,UC7,UC9,UC10,UC15,UC17,UC18
+  F12     UC11,UC12,UC15
+  F13     UC3,UC5,UC9,UC10,UC11
+  F14     UC7
+  F15     UC7,UC8,UC9
+  F16     UC5,UC11
+  F17     UC19

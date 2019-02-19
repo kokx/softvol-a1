@@ -1,0 +1,20 @@
+RESULTS FOR "method2"
+-------------------------------
+Confusion matrix:
+                                       | Trace-links   | Trace-links 
+                                       | identified    | NOT identified
+                                       | manually      | manually
+---------------------------------------------------------------------------------
+Trace-links predicted by the tool      | 3             | 5
+Trace-links NOT predicted by the tool  | 50            | 1758
+
+Precision: 38.%
+Recall:    5.7%
+F-Measure: 0.098	             
+
+Found links by method:
+  
+  F7      UC13,UC14
+  F15     UC7,UC8,UC9
+  F16     UC5,UC11
+  F17     UC19
