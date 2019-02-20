@@ -27,11 +27,16 @@ Requirement readHighlevelRequirements(DataSet grp) {
 
 Requirement readLowlevelRequirements(DataSet grp) {
 	list[str] requirements = readRequirements(grp.dir, "low_level.txt");
-
+	
 	Requirement result = {};
-
-	for (str req <- requirements, /^<id:UC[0-9]+>/ := trim(req), str line <- split("\n", trim(req))) {
-		list[str] reqWords = [applyLowlevelWordFiltering(toLowerCase(word)) | str fLine := applyLowlevelLineFiltering(line), /<word:\S+>/ := fLine];
+	
+	for (str req <- requirements, /^<id:UC[0-9]+>/ := trim(req)) {
+		list[str] reqWords = [];
+		
+		for (str line <- split("\n", trim(req))) {
+			reqWords += [applyLowlevelWordFiltering(toLowerCase(word)) | str fLine := applyLowlevelLineFiltering(line), /<word:\S+>/ := fLine];
+		}
+		
 		result += {<id, reqWords>}; 
 	}
 	

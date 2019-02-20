@@ -26,7 +26,7 @@ Vector calculateVector(Requirement reqs, list[str] vocabulary) {
 
 @doc {
   Calculates the Inverse Document Frequency (IDF) of the different words in the vocabulary
-  The 'occurences' map should map each word of the vocabulary to the number of times it occurs in the requirements.
+  The 'occurences' map should map the number of requirements that contain a certain word from the vocabulary.
   The 'occurences' map should have entries for all the words in the vocabulary, otherwise an exception will be thrown.
 }
 private map[str,real] calculateInverseDocumentFrequency(map[str,int] occurences, list[str] vocabulary, Requirement reqs) {
