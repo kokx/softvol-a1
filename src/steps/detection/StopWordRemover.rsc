@@ -18,7 +18,8 @@ list[str] generateBigrams(list[str] words) {
 
   	
 Requirement removeStopWords(Requirement reqs) {	  
-	reqs = { <r.name, generateBigrams(r.words - readStopwordsList)> | r <- reqs };
+	//reqs = { <r.name, generateBigrams(r.words - readStopwordsList)> | r <- reqs };
+	reqs = { <r.name, r.words - readStopwordsList> | r <- reqs };
   
   	return reqs;
 }

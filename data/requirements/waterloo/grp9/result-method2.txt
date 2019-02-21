@@ -5,16 +5,14 @@ Confusion matrix:
                                        | identified    | NOT identified
                                        | manually      | manually
 ---------------------------------------------------------------------------------
-Trace-links predicted by the tool      | 3             | 5
-Trace-links NOT predicted by the tool  | 50            | 1758
+Trace-links predicted by the tool      | 0             | 4
+Trace-links NOT predicted by the tool  | 53            | 266
 
-Precision: 38.%
-Recall:    5.7%
-F-Measure: 0.098	             
+Precision: 0.0%
+Recall:    0.0%
+F-Measure: 0.0	             
 
 Found links by method:
   
-  F7      UC13,UC14
+  F7      UC13
   F15     UC7,UC8,UC9
-  F16     UC5,UC11
-  F17     UC19

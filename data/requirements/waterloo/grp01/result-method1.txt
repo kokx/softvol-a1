@@ -6,7 +6,7 @@ Confusion matrix:
                                        | manually      | manually
 ---------------------------------------------------------------------------------
 Trace-links predicted by the tool      | 39            | 1235
-Trace-links NOT predicted by the tool  | 0             | 6184
+Trace-links NOT predicted by the tool  | 0             | 0
 
 Precision: 3.1%
 Recall:    1.0E+2%
