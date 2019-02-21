@@ -46,7 +46,7 @@ private ConfusionMatrix calculateConfusionMatrix(TraceLink manual, TraceLink aut
   
   	TP = size(manual & automatic);
   	FP = size(automatic - manual);
-  	TN = size(highlevel join lowlevel) - size(manual) - size(automatic);
+  	TN = size(highlevel join lowlevel) - size(manual) - size(automatic) + size(manual & automatic);
   	FN = size(manual - automatic);
 
 	return <TP,FP,TN,FN>;
