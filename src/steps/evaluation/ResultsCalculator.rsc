@@ -22,18 +22,30 @@ EvaluationResult evaluateMethod(TraceLink manual, TraceLink fromMethod, Requirem
 
 private real calculatePrecision(ConfusionMatrix cm) {
   	// Precision = TP / (TP + FP)
+  	  	
+  	if (cm.truePositives == 0) {
+  		return 0.0;
+  	}
   
 	return 1.0 * cm.truePositives / (cm.truePositives + cm.falsePositives);
 }
 
 private real calculateRecall(ConfusionMatrix cm) { 
   	// Recall = TP / (TP + FN)
+  	  	
+  	if (cm.truePositives == 0) {
+  		return 0.0;
+  	}
   
   	return 1.0 * cm.truePositives / (cm.truePositives + cm.falseNegatives);
 }
 
 private real calculateFMeasure(real precision, real recall) {
   	// F1-score = 2 * (precision * recall) / (precision + recall)
+  	
+  	if (precision == 0 || recall == 0) {
+  		return 0.0;
+  	} 
   
   	return 1.0 * (2 * ((precision * recall) / (precision + recall)));
 }
