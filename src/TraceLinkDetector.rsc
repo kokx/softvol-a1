@@ -16,6 +16,23 @@ import List;
 void gatherLinksGroup1() = gatherLinks(group1());
 void gatherLinksGroup9() = gatherLinks(group9());
 
+
+Requirement applyNgram(Requirement reqs) {
+	return { <r.name, generateNgram(r.words)> | r <- reqs };
+}
+
+list[str] generateNgram(list[str] words) {
+	if (size(words) < 2) {
+		return words;
+	}
+	
+	bigrams = [ words[i] + " " + words[i+1] | i <- [0..(size(words) - 1)] ];
+	trigrams = [ words[i] + " " + words[i+1] + " " + words[i+2] | i <- [0..(size(words) - 2)] ];
+  		
+	return words + bigrams + trigrams;
+}
+
+
 void gatherLinks(DataSet grp) {
 	println("(1/7) Reading highlevel requirements");
 	Requirement highlevel = readHighlevelRequirements(grp);
@@ -25,6 +42,10 @@ void gatherLinks(DataSet grp) {
 	println("(3/7) Removing stop words and apply stemming");
 	highlevel = stemWords(removeStopWords(highlevel));
 	lowlevel = stemWords(removeStopWords(lowlevel));
+	
+	println("(./7) Applying N-gram");
+	highlevel = applyNgram(highlevel);
+	lowlevel = applyNgram(lowlevel);
 	
 	println("(4/7) Building master vocabulary");
 	list[str] vocabulary = extractVocabulary(highlevel + lowlevel);

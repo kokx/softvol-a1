@@ -7,19 +7,9 @@ import List;
 
 import steps::detection::RequirementsReader;
 
-
-list[str] generateBigrams(list[str] words) {
-	if (size(words) < 2) {
-		return words;
-	}
-  		
-	return words + [ words[i] + " " + words[i+1] | i <- [0..(size(words) - 1)] ];
-}
-
-  	
 Requirement removeStopWords(Requirement reqs) {	  
-	reqs = { <r.name, generateBigrams(r.words - readStopwordsList)> | r <- reqs };
-  
+	reqs = { <r.name, r.words - readStopwordsList> | r <- reqs };
+
   	return reqs;
 }
 

@@ -43,10 +43,23 @@ Requirement readLowlevelRequirements(DataSet grp) {
 	return result;
 }
 
+private str removePunctuation(str input) {
+    input = replaceAll(input, ".", "");
+    input = replaceAll(input, ",", "");
+    input = replaceAll(input, "\'", "");
+    input = replaceAll(input, "\"", "");
+    input = replaceAll(input, "-", "");
+    input = replaceAll(input, "_", "");
+    input = replaceAll(input, ":", "");
+
+    return input;
+}
+
 private str applyHighlevelFiltering(str orig) {
-	// TODO: This is the spot to implement some extra filtering if wanted while reading in the highlevel requirements
-	// This function gets called for EVERY word in the highlevel requirements text
-	return orig;
+    // This is the spot to implement some extra filtering if wanted while reading in the highlevel requirements
+    // This function gets called for EVERY word in the highlevel requirements text
+    
+    return removePunctuation(orig);
 }
 
 private str applyLowlevelLineFiltering(str origLine) {
@@ -58,7 +71,8 @@ private str applyLowlevelLineFiltering(str origLine) {
 private str applyLowlevelWordFiltering(str origWord) {
 	// TODO: This is the spot to implement some extra filtering if wanted while reading in the lowlevel requirements
 	// This function gets called for EVERY word in the lowlevel requirements text
-	return origWord;
+	
+	return removePunctuation(origWord);
 }
 
 private list[str] readRequirements(loc dir, str fileName) =
