@@ -63,11 +63,20 @@ private str applyHighlevelFiltering(str orig) {
 }
 
 private str applyLowlevelLineFiltering(str origLine) {
-	// TODO: This is the spot to implement some extra filtering if wanted while reading in the lowlevel requirements
-	// This function gets called for EVERY word in the lowlevel requirements text
-	return origLine;
+    // This is the spot to implement some extra filtering if wanted while reading in the lowlevel requirements
+    // This function gets called for EVERY word in the lowlevel requirements text
+    
+    // we remove M[0-9] (authors), UC[0-9]+ (reqs)
+    
+    origLine = visit(origLine) {
+        // removes all authors
+        case /Authors:\s+(M[0-9]+|[A-Z]\.[A-Z]\.(, )?)+/ => ""
+        // removes all UC's
+        case /UC[0-9]+/ => ""
+    };
+        
+    return origLine;
 }
-
 private str applyLowlevelWordFiltering(str origWord) {
 	// TODO: This is the spot to implement some extra filtering if wanted while reading in the lowlevel requirements
 	// This function gets called for EVERY word in the lowlevel requirements text
